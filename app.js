@@ -1,6 +1,5 @@
 document.getElementById("fetch-user").addEventListener("click", function () {
     fetch("https://randomuser.me/api/") // Question 1: Why does this fetch call fail? api address not accurate
-      .then((response) => response.json())
       .then((data) => {
         displayUser(data.results[0]); // Question 2: Why is data.results undefined? .then response added in line 3
       })
@@ -9,12 +8,12 @@ document.getElementById("fetch-user").addEventListener("click", function () {
   
   function displayUser(user) {
     const userInfoDiv = document.getElementById("user-info");
-    // Question 3: Why isn't the user's name displaying correctly? .notation was not formatted correctly
+    // Question 3: Why isn't the user's name displaying correctly? user.name was not defined correctly. Object missing property.
     userInfoDiv.innerHTML = `Name: ${user.name.first} ${user.name.last}<br>
                              Email: ${user.email}`;
   }
   
-  // Question 4: Why does this API call fail? no second the css needs to be modified. It is giving a 304 not modified code.
+  // Question 4: Why does this API call fail? Because API is not available.
   fetch("https://api.example.com/data")
     .then((response) => response.json())
     .catch((error) => {
